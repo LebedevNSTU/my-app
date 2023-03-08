@@ -145,6 +145,10 @@ function App() {
             cancelButton();
         })
     }
+
+    const prevPageHandler = () => console.log('prev')
+    const todayPageHandler = () => console.log('today')
+    const nextPageHandler = () => console.log('next')
   return (
       <>
           {
@@ -168,7 +172,12 @@ function App() {
           }
           <CalendarStyle>
               <CalendarHeader />
-              <CalendarTitle />
+              <CalendarTitle
+               //today ={today}
+               prevPageHandler ={prevPageHandler}
+               todayPageHandler ={todayPageHandler}
+               nextPageHandler ={nextPageHandler}
+                />
               <CalendarGrid pageFirstDay = {pageFirstDay} grid_events = {events} openForm = {openForm}/>
           </CalendarStyle>
       </>

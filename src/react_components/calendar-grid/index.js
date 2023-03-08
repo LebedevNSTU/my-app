@@ -52,6 +52,7 @@ const DateStyle = styled.div`
     display: flex;
     cursor: pointer;
     justify-content: center;
+    matgin: 2px;
 `
 
 // отображение дня в правом углу
@@ -79,11 +80,26 @@ const EventItemStyle = styled.button`
     cursor: pointer;
     text-align: left;
 `
+//отображение текущего дня
+const CurrentDay = styled.div`
+border-radius: 50%;
+background: red;
+-webkit-box-align: center;
+align-items: center;
+display: flex;
+justify-content: center;
+height: 100%;
+width: 100%;
+`
+//функция что день реально сегодняшний, отображение корректной даты
+const isCurrentDay = (day) => moment().isSame(day, 'day') ;
 
 const CalendarGrid = ({pageFirstDay, grid_events, openForm}) => {
         let startDay = pageFirstDay.clone().subtract(1, "day");
         let daysArray = [...Array(42)].map(() => moment(startDay.add(1, "day"))); // в календарной сетке 6 недель и 42 ячейки, с помощью map в каждую ячейку
                                                                                              // пишем день на 1 больший предыдущего
+
+                                                                                             
         return(
         <GridStyle>
         {
@@ -92,7 +108,8 @@ const CalendarGrid = ({pageFirstDay, grid_events, openForm}) => {
                     <CellRowStyle>
                         <ShowDateStyle>
                         <DateStyle onDoubleClick =  {() => openForm("Create", { title: "", description: "", date: dayObject.format('X')})}>
-                            {dayObject.format('D')}
+                          {!isCurrentDay(dayObject) && dayObject.format('D')}
+                           {isCurrentDay(dayObject) && <CurrentDay> {dayObject.format('D')}</CurrentDay>}
                         </DateStyle>
                         </ShowDateStyle>
                         <EventListStyle>

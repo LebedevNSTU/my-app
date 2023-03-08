@@ -36,7 +36,7 @@ const ButtonStyle = styled.button`
     padding-left: 10px;
 `
 
-const CalendarTitle = () => {
+const CalendarTitle = ({ prevPageHandler, todayPageHandler, nextPageHandler }) => {
     return(
         <MainDivStyle>
             <div>
@@ -44,9 +44,9 @@ const CalendarTitle = () => {
                 <TextStyle> {moment().format('YYYY')}</TextStyle>
             </div>
             <div>
-                <ButtonStyle>&lt;</ButtonStyle>
-                <ButtonStyle>Today</ButtonStyle>
-                <ButtonStyle>&gt;</ButtonStyle>
+                <ButtonStyle onClick={prevPageHandler}>&lt;</ButtonStyle>
+                <ButtonStyle onClick={todayPageHandler}>Today</ButtonStyle>
+                <ButtonStyle onClick={nextPageHandler}>&gt;</ButtonStyle>
             </div>
         </MainDivStyle>
     );
