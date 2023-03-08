@@ -1,3 +1,16 @@
 {
-  "events": []
+  "events": [
+    {
+      "title": "",
+      "description": "праздник",
+      "date": "1678208400",
+      "id": 1
+    },
+    {
+      "title": "celebrate",
+      "description": "xxxx",
+      "date": "1678208400",
+      "id": 2
+    }
+  ]
 }
